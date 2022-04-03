@@ -30,7 +30,7 @@
         "filament/spatie-laravel-settings-plugin": "^2.8",
         "spatie/laravel-package-tools": "^1.10",
         "spatie/laravel-sitemap": "^6.1",
-        "3x1/filament-themes": "^1.0"
+        "3x1io/filament-themes": "^1.0"
     },
     "config": {
         "sort-packages": true
