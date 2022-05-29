@@ -25,6 +25,11 @@ class FilamentSitemapProvider extends PluginServiceProvider
     public function boot(): void
     {
         parent::boot();
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        if (! class_exists('SitesSettings')) {
+            $this->publishes([
+                __DIR__ . '/../database/migrations/sites_settings.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_sites_settings.php'),
+            ], 'migrations');
+        }
     }
 }
