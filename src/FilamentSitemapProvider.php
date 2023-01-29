@@ -27,7 +27,11 @@ class FilamentSitemapProvider extends PluginServiceProvider
         parent::boot();
 
         //Register migrations
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        if (! class_exists('SitesSettings')) {
+            $this->publishes([
+                __DIR__ . '/../database/migrations/sites_settings.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_sites_settings.php'),
+            ], 'filament-sitemap-migrations');
+        }
 
         //Register config
         $this->mergeConfigFrom(__DIR__ . '/../config/filament-sitemap.php', 'filament-sitemap');
