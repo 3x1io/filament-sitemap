@@ -25,6 +25,17 @@ class FilamentSitemapProvider extends PluginServiceProvider
     public function boot(): void
     {
         parent::boot();
+
+        //Register migrations
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        //Register config
+        $this->mergeConfigFrom(__DIR__ . '/../config/filament-sitemap.php', 'filament-sitemap');
+
+        //Publish Config
+        $this->publishes([
+            __DIR__ . '/../config/filament-sitemap.php' => config_path('filament-sitemap.php'),
+        ], 'filament-sitemap-config');
+
     }
 }
