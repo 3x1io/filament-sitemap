@@ -40,6 +40,5 @@ class FilamentSitemapProvider extends PluginServiceProvider
         $this->publishes([
             __DIR__ . '/../config/filament-sitemap.php' => config_path('filament-sitemap.php'),
         ], 'filament-sitemap-config');
-
     }
 }
